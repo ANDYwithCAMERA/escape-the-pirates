@@ -12,8 +12,6 @@ export default function Home() {
           offline, and an unknown vessel is approaching rapidly. Work together to restart the engine, but beware - a
           saboteur may be among you, taking advantage of your crew's memory loss!
         </p>
-
-        
         <Link href="/setup">
           <Button className="space-button font-bold py-2 px-4 rounded">Start New Mission</Button>
         </Link>

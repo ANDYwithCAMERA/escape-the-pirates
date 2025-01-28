@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Escape the Pirates',
-  description: 'a social deduction game set in space.',
+  description: 'A social deduction game set in space.',
 }
 
 export default function RootLayout({
