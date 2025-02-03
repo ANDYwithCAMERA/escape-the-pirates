@@ -132,7 +132,7 @@ export default function Setup() {
           </div>
         )}
         <p className="mb-4 text-space-secondary text-xl">
-          Transmit these top-secret QR codes to each crew member.
+          Each crew member should scan the QR code above to get their unique terminal. Alternatively, you can share the URL with them via another means.
         </p>
         <Button onClick={goToControlSystem} className="space-button w-full font-bold py-3 px-4 rounded mb-4 text-xl">
           To the Spaceship Control System!
@@ -141,4 +141,3 @@ export default function Setup() {
     </div>
   )
 }
-
