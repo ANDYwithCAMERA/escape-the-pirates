@@ -33,6 +33,12 @@ function GameContent() {
   const [hostUrl, setHostUrl] = useState("")
   const [gameCode, setGameCode] = useState("")
   const [currentQRIndex, setCurrentQRIndex] = useState(0)
+  const [isClient, setIsClient] = useState(false) // New state to detect client-side rendering
+
+  useEffect(() => {
+    // Set isClient to true once the component has mounted (client-side)
+    setIsClient(true)
+  }, [])
 
   useEffect(() => {
     const code = generateCode()
@@ -86,6 +92,10 @@ function GameContent() {
     setCurrentQRIndex((prevIndex) => Math.max(prevIndex - 1, 0))
   }
 
+  if (!isClient) {
+    return null; // Don't render the component until we're on the client
+  }
+
   return (
     <div className="min-h-screen p-8">
       <div className="space-window rounded-lg p-8 max-w-4xl mx-auto">
@@ -130,4 +140,3 @@ export default function GameClient() {
     </Suspense>
   )
 }
-

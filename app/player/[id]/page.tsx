@@ -1,5 +1,3 @@
-"use client"
-
 import { useRouter, useSearchParams } from "next/navigation"
 import { decodePlayerData } from "../../utils/clueUtils"
 
@@ -7,13 +5,30 @@ export default function Player() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const encodedData = searchParams.get("data") || ""
-  const { role, code, clues } = decodePlayerData(encodedData)
+
+  let role = "", code = "", clues = []
+
+  try {
+    const decodedData = decodePlayerData(encodedData)
+    role = decodedData.role
+    code = decodedData.code
+    clues = decodedData.clues
+  } catch (error) {
+    console.error("Error decoding player data:", error)
+    return (
+      <div className="min-h-screen flex items-center justify-center p-4">
+        <div className="space-window rounded-lg p-8 text-center max-w-2xl">
+          <h1 className="text-4xl font-bold mb-6 text-space-accent">Error</h1>
+          <p className="text-space-text text-xl">We couldn't decode your player data. Please make sure the URL is correct or try again later.</p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="space-window rounded-lg p-8 text-center max-w-2xl">
         <h1 className="text-4xl font-bold mb-6 text-space-accent">Space Mission Alert: It's Bonkers Time!</h1>
-
         {role !== "Pirate" ? (
           <>
             <p className="mb-4 text-space-text text-xl">
@@ -27,7 +42,7 @@ export default function Player() {
 
               You need to enter a jump confirmation code to activate the jump drive. Your personal terminal contains the code, but it's been garbled. The crew must cross-reference codes to find the correct one before it's too late.
             </p>
-            <p className="mb-4 text-space-text text-xl"> 
+            <p className="mb-4 text-space-text text-xl">
              You don't recognise your own ship. You don't remember your crewmates, or your mission. Slowly though, some details are starting to come back to you.
             </p>
             {clues.map((clue, index) => (
@@ -70,4 +85,3 @@ export default function Player() {
     </div>
   )
 }
-
