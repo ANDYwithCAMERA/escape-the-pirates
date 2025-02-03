@@ -1777,10 +1777,6 @@ h6 {
   animation: fadeInOut 2s ease-in-out;
 }
 
-.pirate-ship {
-  animation: wiggle 0.5s infinite alternate;
-}
-
 @keyframes fadeInOut {
   0%,
   100% {
@@ -1789,15 +1785,6 @@ h6 {
   10%,
   90% {
     opacity: 1;
-  }
-}
-
-@keyframes wiggle {
-  0% {
-    transform: rotate(-5deg);
-  }
-  100% {
-    transform: rotate(5deg);
   }
 }
 
@@ -3225,5 +3212,4 @@ h6 {
 [data-side=right] .\[\[data-side\=right\]_\&\]\:cursor-e-resize{
   cursor: e-resize;
 }
-
 
