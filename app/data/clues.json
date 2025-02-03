@@ -1,0 +1,108 @@
+[
+  {
+    "id": 1,
+    "full_memory_text": "You remember having been to a leaving party for someone before you last docked, you all ate {food.full} in the mess hall.",
+    "partial_memory_text": "You remember waking up after a party on your last trip. your uniform had {food.partial} stains on it.",
+    "full_observation": "When you came aboard, you saw a lot of leftover {food.full} in the mess hall.",
+    "partial_observation": "you saw a lot of napkins with {food.partial} stains, in the trash in the mess hall when you came aboard.",
+    "variable_list": {
+      "food": {
+        "pizza": { "full": "pizza", "partial": "red" },
+        "spaghetti": { "full": "spaghetti", "partial": "red" },
+        "burgers": { "full": "burgers", "partial": "brown" },
+        "salad": { "full": "salad", "partial": "green" },
+        "tacos": { "full": "tacos", "partial": "yellow" },
+        "chocolate cake": { "full": "chocolate cake", "partial": "brown" }
+      }
+    }
+  },
+  {
+    "id": 2,
+    "full_memory_text": "On your last trip, you stopped over at {station.full}",
+    "partial_memory_text": "You vaguely remember stopping at {station.partial} on a previous trip.",
+    "full_observation": "You remember a crewmate telling you about a trip to {station.full} on the last trip.",
+    "partial_observation": "The ship logs mentioend something about stopping at {station.partial} on a previous trip.",
+    "variable_list": {
+      "station": {
+        "Helios Outpost ": { "full": "Helios Outpost ", "partial": "an outpost" },
+        "Black Rock Station": { "full": "Black Rock Station", "partial": "a station" },
+        "Wayfarer's Dockyards ": { "full": "Wayfarer's Dockyards ", "partial": "a dockyard" },
+        "Ganymede": { "full": "Ganymede", "partial": "a moonbase" },
+        "Luna": { "full": "Luna", "partial": "a moonbase" },
+        "Oblivion Station": { "full": "Oblivion Station", "partial": "a station" },
+        "Hyperion Outpost ": { "full": "Hyperion Outpost ", "partial": "an outpost" }
+      }
+    }
+  },
+  {
+    "id": 3,
+    "full_memory_text": "You remember hauling {cargo.full} on your last mission.",
+    "partial_memory_text": "you know you were hauling something valuable on your last mission. Maybe {cargo.partial}",
+    "full_observation": "You saw a cargo manifest that listed {cargo.full}, though you doubt that was everything.",
+    "partial_observation": "When you boarded, you saw some crates labelled {cargo.partial} being offloaded",
+    "variable_list": {
+      "cargo": {
+        "rail gun darts": { "full": "railgun darts", "partial": "weapons" },
+        "missiles": { "full": "missiles", "partial": "weapons" },
+        "vaccines": { "full": "vaccines", "partial": "medical supplies" },
+        "medical bots": { "full": "medical bots", "partial": "medical supplies" },
+        "AI cores": { "full": "AI Cores", "partial": "computing equipment" },
+        "nav computers": { "full": "nav computers", "partial": "computing equipment" },
+        "terraforming equipment": { "full": "terraforming equipment", "partial": "machinery" }
+      }
+    }
+  },
+  {
+    "id": 4,
+    "full_memory_text": "You made friends with {person.full_name} on the past trip, but they left at the last station.",
+    "partial_memory_text": "you remember someone leaving the crew at the last station. You picked up a replacement there.",
+    "full_observation": "You saw {person.full_name} leaving with their gear as you came aboard.",
+    "partial_observation": "Someone left as you came aboard, but all you caught was {person.first_name} on the departure log.”",
+    "variable_list": {
+      "person": {
+        "Tom Wells": { "full_name": "Tom Wells", "first_name": "Tom" },
+        "Sarah Jones": { "full_name": "Sarah Jones", "first_name": "Sarah" },
+        "Marcus Burke": { "full_name": "Marcus Burke", "first_name": "Marcus" },
+        "Tom": { "full_name": "Tom Murphy", "first_name": "Tom" },
+        "Evelyne Blake": { "full_name": "Evelyne Blake", "first_name": "Evelyne" }
+      }
+    }
+  },
+  {
+    "id": 5,
+    "full_memory_text": "You heard rumors about {person.full_name} being involved in {incident.full}.",
+    "partial_memory_text": "You remember whispers about {person.first_name} and a {incident.partial}, but couldn't verify anything.",
+    "full_observation": "You overheard a conversation about {person.full_name} and their role in {incident.full}.",
+    "partial_observation": "You overheard something about a {incident.partial}.",
+    "variable_list": {
+      "incident": {
+        "cargo theft": { "full": "cargo theft", "partial": "theft" },
+        "data breach": { "full": "data breach", "partial": "breach" }
+      },
+      "person": {
+        "Tom Wells": { "full_name": "Tom Wells", "first_name": "Tom" },
+        "Sarah Jones": { "full_name": "Sarah Jones", "first_name": "Sarah" },
+        "Marcus Burke": { "full_name": "Marcus Burke", "first_name": "Marcus" }
+      }
+    }
+  },
+  {
+    "id": 6,
+    "full_memory_text": "During a previous mission, you noticed that the ship's navigation system kept glitching while heading to {station.full}.",
+    "partial_memory_text": "You recall some odd navigation issues on a previous mission near a {station.partial}. It seemed strange.",
+    "full_observation": "You checked the nav system logs and saw some unexplained glitches on a previous trip while heading to {station.full}.",
+    "partial_observation": "You heard a few crewmates mention navigation glitches near a {station.partial}, but nothing was confirmed.",
+    "variable_list": {
+      "station": {
+        "Helios Outpost ": { "full": "Helios Outpost ", "partial": "an outpost" },
+        "Black Rock Station": { "full": "Black Rock Station", "partial": "a station" },
+        "Wayfarer's Dockyards ": { "full": "Wayfarer's Dockyards ", "partial": "a dockyard" },
+        "Ganymede": { "full": "Ganymede", "partial": "a moonbase" },
+        "Luna": { "full": "Luna", "partial": "a moonbase" },
+        "Oblivion Station": { "full": "Oblivion Station", "partial": "a station" },
+        "Hyperion Outpost ": { "full": "Hyperion Outpost ", "partial": "an outpost" }
+      }
+    }
+  }
+]
+

@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation"
 import { QRCodeSVG } from "qrcode.react"
 import { Button } from "@/components/ui/button"
 import { ClipboardCopyIcon } from "@radix-ui/react-icons"
+import { generateClues, encodePlayerData } from "../utils/clueUtils"
 
 function generateUniqueId() {
   return Math.random().toString(36).substr(2, 9)
@@ -14,14 +15,10 @@ function generateCode() {
   return Math.floor(100 + Math.random() * 900).toString()
 }
 
-function corruptCode(code: string) {
-  const index = Math.floor(Math.random() * 3)
-  const newDigit = Math.floor(Math.random() * 10).toString()
+function corruptCode(code: string, i: Number) {
+  const index = ((i - 1) % 3) + 1
+  const newDigit = Math.floor(Math.random() * 10)
   return code.substring(0, index) + newDigit + code.substring(index + 1)
-}
-
-function encodeData(data: { role: string; code: string }) {
-  return btoa(JSON.stringify(data))
 }
 
 function encodeCorrectCode(code: string) {
@@ -47,16 +44,18 @@ function GameContent() {
 
     // Generate URL for host (first player)
     const hostRole = shuffledRoles[0]
-    const hostCode = hostRole === "Pirate" ? "" : Math.random() < 0.3 ? corruptCode(code) : code
-    const hostEncodedData = encodeData({ role: hostRole, code: hostCode })
+    const hostCode = hostRole === "Pirate" ? code : corruptCode(code, 0)
+    const hostClues = generateClues(hostRole === "Pirate")
+    const hostEncodedData = encodePlayerData(hostRole, hostCode, hostClues)
     const hostUniqueId = generateUniqueId()
     setHostUrl(`${window.location.origin}/player/${hostUniqueId}?data=${hostEncodedData}`)
 
     // Generate URLs for other players
     for (let i = 1; i < playerCount; i++) {
       const role = shuffledRoles[i]
-      const playerCode = role === "Pirate" ? "" : Math.random() < 0.3 ? corruptCode(code) : code
-      const encodedData = encodeData({ role, code: playerCode })
+      const playerCode = role === "Pirate" ? code : corruptCode(code, i)
+      const playerClues = generateClues(role === "Pirate")
+      const encodedData = encodePlayerData(role, playerCode, playerClues)
       const url = `${window.location.origin}/player/${generateUniqueId()}?data=${encodedData}`
       urls.push(url)
     }
