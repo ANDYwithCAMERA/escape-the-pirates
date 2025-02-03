@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import "./globals.css"
+import Footer from "./Footer"
 
 export const metadata: Metadata = {
   title: "Escape the Pirates",
@@ -15,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>{children}</body>
+      <Footer />
     </html>
   )
 }
-

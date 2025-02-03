@@ -13,6 +13,9 @@ export default function Home() {
           Your crew has just awakened from cryo sleep, their memories scrambled! The ship's AI is
           offline, and an unfriendly looking ship is approaching. Can you jump to safety before it arrives?
         </p>
+        <p className="mb-6 text-space-secondary text-lg">
+          Four or more can play. Each player gets a URL to open on their phone with a unique set of memories.
+        </p>
         <Link href="/setup">
           <Button className="space-button font-bold py-3 px-6 text-xl">Start New Game</Button>
         </Link>

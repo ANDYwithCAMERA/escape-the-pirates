@@ -1,6 +1,4 @@
 {
-  "/page": "app/page.js",
-  "/setup/page": "app/setup/page.js",
-  "/control-system/page": "app/control-system/page.js",
-  "/player/[id]/page": "app/player/[id]/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js"
 }
