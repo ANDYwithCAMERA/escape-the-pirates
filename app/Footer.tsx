@@ -27,7 +27,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     background: '#ffffff',
     color: '#555',
     fontFamily: "'Poppins', sans-serif",
-    position: 'fixed',
     bottom: 0,
     width: '100%',
     boxShadow: '0px -2px 10px rgba(0, 0, 0, 0.2)',

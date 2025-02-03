@@ -121,14 +121,17 @@ export default function Setup() {
               <ClipboardCopyIcon />
               <span>Copy Secret URL</span>
             </button>
-            <div className="flex justify-between w-full mt-4">
-              <Button onClick={showPreviousQR} disabled={currentQRIndex === 0} className="space-button">
-                Previous Crew Member
-              </Button>
-              <Button onClick={showNextQR} disabled={currentQRIndex === playerUrls.length - 1} className="space-button">
-                Next Crew Member
-              </Button>
-            </div>
+
+        <div className="flex justify-between w-full mt-4 button-container">
+            <Button onClick={showPreviousQR} disabled={currentQRIndex === 0} className="space-button">
+            Previous Crew Member
+            </Button>
+            <Button onClick={showNextQR} disabled={currentQRIndex === playerUrls.length - 1} className="space-button">
+            Next Crew Member
+            </Button>
+        </div>
+
+
           </div>
         )}
         <p className="mb-4 text-space-secondary text-xl">

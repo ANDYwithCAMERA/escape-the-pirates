@@ -16,6 +16,9 @@ export default function Home() {
         <p className="mb-6 text-space-secondary text-lg">
           Four or more can play. Each player gets a URL to open on their phone with a unique set of memories.
         </p>
+        <p className="mb-6 text-space-secondary text-lg">
+          Each player needs their own device to play. This device will be used to monitor the scanner and enter the jump confirmation code.
+        </p>
         <Link href="/setup">
           <Button className="space-button font-bold py-3 px-6 text-xl">Start New Game</Button>
         </Link>

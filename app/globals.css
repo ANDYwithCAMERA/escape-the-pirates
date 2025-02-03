@@ -29,7 +29,6 @@
 body {
   @apply bg-background text-foreground;
   font-family: "Roboto", sans-serif;
-  background-image: url("/space-background.jpg");
   background-size: cover;
   background-attachment: fixed;
 }
@@ -63,6 +62,29 @@ h6 {
   box-shadow: 0 4px 0 #000;
   transform: translateY(-4px);
 }
+
+@media (max-width: 600px) {
+    .button-container {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .button-container button {
+      width: 100%;
+      text-align: center;
+    }
+
+    .space-button {
+        white-space: normal; /* Allows text to wrap */
+        word-wrap: break-word; /* Ensures long words break correctly */
+        text-align: center; /* Keeps text centered */
+        padding: 1rem; /* Ensures enough padding for readability */
+        min-height: 3rem; /* Sets a reasonable minimum height */
+        display: flex; /* Ensures content inside adjusts properly */
+        align-items: center; /* Centers text vertically */
+        justify-content: center; /* Centers text horizontally */
+    }
+  }
 
 .space-button:hover {
   background-color: #ff6b6b;

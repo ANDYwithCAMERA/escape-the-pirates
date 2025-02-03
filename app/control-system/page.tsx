@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { useState, useEffect, useRef, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
@@ -52,11 +52,13 @@ function ControlSystemInner() {
   }, [])
 
   useEffect(() => {
-    const progress = 1 - timeRemaining / (30 * 60) // Assuming max time is 30 minutes
-    const radius = 180 - progress * 180 // Start from outer edge (180) and move towards center (0)
+    const progress = 1 - timeRemaining / (30 * 60) // Max time = 30 minutes
+    const radarSize = 400 // This value should match the viewBox
+    const center = radarSize / 2
+    const radius = (center - 20) * (1 - progress) // Adjust radius dynamically
     const angle = progress * 2 * Math.PI
-    const x = 200 + radius * Math.cos(angle)
-    const y = 200 + radius * Math.sin(angle)
+    const x = center + radius * Math.cos(angle)
+    const y = center + radius * Math.sin(angle)
     pirateShipRef.current = { x, y }
   }, [timeRemaining])
 
@@ -91,8 +93,8 @@ function ControlSystemInner() {
             {piratesWin
               ? inputCode
                 ? "Incorrect code entered. The pirates have seized control of your ship!"
-                : "The pirates have boarded your ship before you could restart the engine!"
-              : "Congratulations! You've successfully restarted the engine and escaped the pirates!"}
+                : "The pirates have boarded your ship before you could initiate a jump!"
+              : "Congratulations! You've successfully jumped the ship to safety and escaped the pirates!"}
           </p>
           <Button onClick={() => router.push("/")} className="space-button font-bold py-2 px-4 rounded">
             Play Again
@@ -107,13 +109,12 @@ function ControlSystemInner() {
       <div className="space-window rounded-lg p-8 max-w-2xl w-full">
         <h1 className="text-3xl font-bold mb-6 text-center text-space-accent">Spaceship Control System</h1>
         <div className="mb-6 text-center">
-          <h2 className="text-2xl font-bold text-space-text">Pirate Ship Scanner</h2>
-          <div className="relative w-[400px] h-[400px] mx-auto">
-            <svg width="400" height="400" viewBox="0 0 400 400" className="scanner">
+          <h2 className="text-2xl font-bold text-space-text">Scanner</h2>
+          <div className="relative w-full max-w-[400px] h-auto aspect-square mx-auto">
+            <svg className="w-full h-full" viewBox="0 0 400 400">
               <circle cx="200" cy="200" r="180" fill="none" stroke="#0f0" strokeWidth="2" />
               <circle cx="200" cy="200" r="120" fill="none" stroke="#0f0" strokeWidth="2" />
               <circle cx="200" cy="200" r="60" fill="none" stroke="#0f0" strokeWidth="2" />
-              {/* Time labels removed */}
               <line
                 x1="200"
                 y1="200"
@@ -121,57 +122,40 @@ function ControlSystemInner() {
                 y2="200"
                 stroke="#0f0"
                 strokeWidth="2"
-                className="scanner-line"
-                style={{ transform: `rotate(${scannerAngle}deg)` }}
+                style={{ transform: `rotate(${scannerAngle}deg)`, transformOrigin: "200px 200px" }}
               />
               <circle cx="200" cy="200" r="5" fill="#0f0" />
               {showPirateShip && (
-                <g className="pirate-ship-group">
-                  <circle
-                    cx={pirateShipRef.current.x}
-                    cy={pirateShipRef.current.y}
-                    r="5"
-                    fill="red"
-                    className="pirate-ship"
-                  />
+                <g>
+                  <circle cx={pirateShipRef.current.x} cy={pirateShipRef.current.y} r="5" fill="red" />
                   <Skull x={pirateShipRef.current.x + 10} y={pirateShipRef.current.y - 10} size={20} color="red" />
                 </g>
               )}
             </svg>
           </div>
         </div>
+        <p className="text-2xl font-bold text-space-text">Enter Jump Confirmation Code</p>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex justify-between space-x-4">
-            <Input
-              type="number"
-              value={inputCode[0] || ""}
-              onChange={(e) => setInputCode((prev) => e.target.value + prev.slice(1))}
-              className="space-input w-1/3 text-center text-2xl"
-              min={0}
-              max={9}
-              required
-            />
-            <Input
-              type="number"
-              value={inputCode[1] || ""}
-              onChange={(e) => setInputCode((prev) => prev[0] + e.target.value + prev[2])}
-              className="space-input w-1/3 text-center text-2xl"
-              min={0}
-              max={9}
-              required
-            />
-            <Input
-              type="number"
-              value={inputCode[2] || ""}
-              onChange={(e) => setInputCode((prev) => prev.slice(0, 2) + e.target.value)}
-              className="space-input w-1/3 text-center text-2xl"
-              min={0}
-              max={9}
-              required
-            />
+            {[0, 1, 2].map((i) => (
+              <Input
+                key={i}
+                type="number"
+                value={inputCode[i] || ""}
+                onChange={(e) => {
+                  let newCode = inputCode.split("")
+                  newCode[i] = e.target.value
+                  setInputCode(newCode.join(""))
+                }}
+                className="space-input w-1/3 text-center text-2xl"
+                min={0}
+                max={9}
+                required
+              />
+            ))}
           </div>
           <Button type="submit" className="space-button w-full font-bold py-2 px-4 rounded">
-            Restart Engine
+            Initiate Jump
           </Button>
         </form>
       </div>
